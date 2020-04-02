@@ -30,6 +30,6 @@
       <button type="submit" class="btn btn-default" [disabled]="timerForm.invalid">Start</button>
     </div>
   </div>
-  <app-timer [eventNameInput]="eventName" [eventDateInput]="eventDate" [eventTimeInput]="eventTime"></app-timer>
+  <app-timer [eventNameInput]="eventName"></app-timer>
 
   Angular Generated Form Model: {{timerForm.value | json}}

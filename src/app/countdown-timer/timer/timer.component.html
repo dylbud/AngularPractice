@@ -1,10 +1,17 @@
-<div class="container">
+<div class="container w-75">
   <div class="jumbotron">
-    <div class="panel panel-default">
+    <div class="panel panel-default w-75">
       <div class="panel-heading">{{ eventNameInput }}</div>
       <div class="panel-body">
         <h1></h1>
-        <h3>{{ eventDateInput | date:"MM/dd/yy" }}</h3>
+        <div class="row timer-readout">
+          <div class="col-sm-2 timer-readout">{{ years }}</div>
+          <div class="col-sm-2">{{ months }}</div>
+          <div class="col-sm-2">{{ days }}</div>
+          <div class="col-sm-2">{{ hours }}</div>
+          <div class="col-sm-2">{{ minutes }}</div>
+          <div class="col-sm-2">{{ seconds }}</div>
+        </div>
       </div>
     </div>
   </div>

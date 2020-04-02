@@ -1,0 +1,5 @@
+.timer-readout div {
+  color: red;
+  font-size: 48pt;
+  text-align: center;
+}
