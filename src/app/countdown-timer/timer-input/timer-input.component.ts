@@ -1,6 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import {BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl, AbstractControl } from '@angular/forms';
+import { CountdownTimerService } from '../countdown-timer-service.service';
+
 
 
 @Component({
@@ -10,7 +12,7 @@ import { NgForm } from '@angular/forms';
 })
 export class TimerInputComponent implements OnInit {
 
-  constructor() {
+  constructor(private service: CountdownTimerService) {
     this.datePickerConfig = Object.assign({}, {
       containerClass: 'theme-dark-blue',
       showWeekNumbers: false,
@@ -22,14 +24,26 @@ export class TimerInputComponent implements OnInit {
   eventName: string;
   eventDate: Date;
   eventTime: Date;
-  eventDateTime: Date;
+
+  eventTimeCtrl = new FormControl('', (control: AbstractControl) => {
+    return null;
+  });
 
   ngOnInit() {
   }
 
   submitEvent(form: NgForm): void {
-    console.log(form.value);
     this.eventName = form.value.eventName;
+    if (form.value.eventTime) {
+      this.eventDate.setHours(this.eventTime.getHours());
+      this.eventDate.setMinutes(this.eventTime.getMinutes());
+      this.eventDate.setSeconds(this.eventTime.getSeconds());
+    } else {
+      this.eventDate.setHours(0);
+      this.eventDate.setMinutes(0);
+      this.eventDate.setSeconds(0);
+    }
+    this.service.setTimerDisplay(this.eventDate);
   }
 
 }

@@ -1,5 +1,12 @@
 .timer-readout div {
+  font-size: xx-large;
   color: red;
-  font-size: 48pt;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.timer-label div {
+  font-size: x-small;
+  color: black;
   text-align: center;
 }

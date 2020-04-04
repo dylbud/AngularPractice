@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { CountdownTimerService } from '../countdown-timer-service.service';
+
 
 
 @Component({
@@ -6,29 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.css']
 })
-export class TimerComponent implements OnInit {
+export class TimerComponent {
 
-  years: number = 2;
-  months: number = 5;
-  days: number = 24;
-  hours: number = 8;
-  minutes: number = 56;
-  seconds: number = 2;
-
-  @Input()
-  eventNameInput: string;
-
-  constructor() { }
-
-
-
-
-
-
-
-
-  ngOnInit() {
-  }
-
+  constructor(private service: CountdownTimerService) { }
 
 }

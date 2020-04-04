@@ -1,18 +1,17 @@
-<div class="container w-75">
-  <div class="jumbotron">
-    <div class="panel panel-default w-75">
-      <div class="panel-heading">{{ eventNameInput }}</div>
-      <div class="panel-body">
-        <h1></h1>
-        <div class="row timer-readout">
-          <div class="col-sm-2 timer-readout">{{ years }}</div>
-          <div class="col-sm-2">{{ months }}</div>
-          <div class="col-sm-2">{{ days }}</div>
-          <div class="col-sm-2">{{ hours }}</div>
-          <div class="col-sm-2">{{ minutes }}</div>
-          <div class="col-sm-2">{{ seconds }}</div>
-        </div>
+<div class="col-sm-2"></div>
+<div class="col-sm-6">
+
+      <div class="row timer-readout">
+        <div class="col-sm-3">{{ service.days$ | async }}</div>
+        <div class="col-sm-3">{{ service.hours$ | async }}</div>
+        <div class="col-sm-3">{{ service.minutes$ | async }}</div>
+        <div class="col-sm-3">{{ service.seconds$ | async }}</div>
       </div>
-    </div>
-  </div>
-</div>
+      <div class="row timer-label">
+        <div class="col-sm-3">Days</div>
+        <div class="col-sm-3">Hours</div>
+        <div class="col-sm-3">Minutes</div>
+        <div class="col-sm-3">Seconds</div>
+      </div>
+
+</div>  
