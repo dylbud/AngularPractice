@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "DarkTruth": {
+    "AngularPractice": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/DarkTruth",
+            "outputPath": "dist/AngularPractice",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "DarkTruth:build"
+            "browserTarget": "AngularPractice:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "DarkTruth:build:production"
+              "browserTarget": "AngularPractice:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "DarkTruth:build"
+            "browserTarget": "AngularPractice:build"
           }
         },
         "test": {
@@ -113,15 +113,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "DarkTruth:serve"
+            "devServerTarget": "AngularPractice:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "DarkTruth:serve:production"
+              "devServerTarget": "AngularPractice:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "DarkTruth"
+  "defaultProject": "AngularPractice"
 }
