@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import {BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { NgForm, FormControl, AbstractControl, NgModel } from '@angular/forms';
 import { CountdownTimerService } from '../countdown-timer-service.service';
 
