@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import {BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
-import { NgForm, FormControl, AbstractControl } from '@angular/forms';
+import { NgForm, FormControl, AbstractControl, NgModel } from '@angular/forms';
 import { CountdownTimerService } from '../countdown-timer-service.service';
 
 
@@ -25,9 +25,16 @@ export class TimerInputComponent implements OnInit {
   eventDate: Date;
   eventTime: Date;
 
-  eventTimeCtrl = new FormControl('', (control: AbstractControl) => {
-    return null;
-  });
+  validateTime(): boolean {
+     if (this.eventDate && this.eventTime < new Date()) {
+       if (this.eventDate.getFullYear() === this.eventTime.getFullYear()
+       && this.eventDate.getMonth() ===  this.eventTime.getMonth()
+       && this.eventDate.getDate() === this.eventTime.getDate()) {
+       return false;
+       }
+     }
+     return true;
+  }
 
   ngOnInit() {
   }
