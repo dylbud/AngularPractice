@@ -1,8 +1,8 @@
 .timer-readout div {
   font-size: xx-large;
-  color: red;
+  color: #3c763d;
   text-align: center;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Helvetica';
 }
 
 .timer-label div {
