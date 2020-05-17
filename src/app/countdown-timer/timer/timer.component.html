@@ -1,6 +1,8 @@
 <div class="col-sm-2"></div>
 <div class="col-sm-6">
-
+  <div class="panel panel-default" [hidden]="service.timerIsHidden$ | async">
+    <div class="panel-body">
+      <h4 class="event-name">{{ service.eventName$ | async }}</h4>
       <div class="row timer-readout">
         <div class="col-sm-3">{{ service.days$ | async }}</div>
         <div class="col-sm-3">{{ service.hours$ | async }}</div>
@@ -13,5 +15,7 @@
         <div class="col-sm-3">Minutes</div>
         <div class="col-sm-3">Seconds</div>
       </div>
+    </div>
+  </div> 
 
 </div>  

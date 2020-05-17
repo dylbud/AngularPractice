@@ -5,11 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './countdown-timer.component.html',
   styleUrls: ['./countdown-timer.component.css']
 })
-export class CountdownTimerComponent implements OnInit {
+export class CountdownTimerComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

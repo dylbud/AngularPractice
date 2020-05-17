@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, timer, pipe } from 'rxjs';
+import { Observable, timer, pipe, of } from 'rxjs';
 import { take, map, distinctUntilChanged } from 'rxjs/operators';
 
 @Injectable({
@@ -11,8 +11,11 @@ export class CountdownTimerService {
   hours$: Observable<number>;
   days$: Observable<number>;
   eventDate: Date;
+  timerIsHidden$ = of(true);
+  eventName$: Observable<string>;
 
   INTERVAL = 1000;
+
 
   constructor() { }
 
@@ -65,12 +68,14 @@ export class CountdownTimerService {
    }), distinctUntilChanged());
   }
 
-  setTimerDisplay(eventDate: Date): void {
+  setTimerDisplay(eventDate: Date, eventName: string): void {
     this.eventDate = eventDate;
+    this.eventName$ = of(eventName);
     this.seconds$ = this.getSeconds();
     this.minutes$ = this.getMinutes();
     this.hours$ = this.getHours();
     this.days$ = this.getDays();
+    this.timerIsHidden$ = of(false);
   }
 
 }

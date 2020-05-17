@@ -50,7 +50,7 @@ export class TimerInputComponent implements OnInit {
       this.eventDate.setMinutes(0);
       this.eventDate.setSeconds(0);
     }
-    this.service.setTimerDisplay(this.eventDate);
+    this.service.setTimerDisplay(this.eventDate, this.eventName);
   }
 
 }
