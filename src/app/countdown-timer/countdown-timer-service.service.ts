@@ -14,7 +14,7 @@ export class CountdownTimerService {
   timerIsHidden$ = of(true);
   eventName$: Observable<string>;
 
-  INTERVAL = 100;
+  INTERVAL = 1000;
 
 
   constructor() { }
