@@ -13,6 +13,7 @@ import { FileNotFoundComponent } from './file-not-found/file-not-found.component
 import { CountdownTimerComponent } from './countdown-timer/countdown-timer.component';
 import { TimerComponent } from './countdown-timer/timer/timer.component';
 import { TimerInputComponent } from './countdown-timer/timer-input/timer-input.component';
+import { FlipImageComponent } from './flip-image/flip-image.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { TimerInputComponent } from './countdown-timer/timer-input/timer-input.c
     FileNotFoundComponent,
     CountdownTimerComponent,
     TimerComponent,
-    TimerInputComponent
+    TimerInputComponent,
+    FlipImageComponent
   ],
   imports: [
     BrowserModule,
