@@ -14,18 +14,18 @@ export class CountdownTimerService {
   timerIsHidden$ = of(true);
   eventName$: Observable<string>;
 
-  INTERVAL = 1000;
+  INTERVAL = 100;
 
 
   constructor() { }
 
   getMilliseconds(): number {
     const currentDate = new Date();
-    return this.eventDate.getTime() - currentDate.getTime();
+    return Math.floor((this.eventDate.getTime() - currentDate.getTime()) / 1000);
   }
 
   getSeconds(): Observable<number> {
-    let seconds = Math.floor(this.getMilliseconds() / 1000);
+    let seconds = this.getMilliseconds();
     return timer(0, this.INTERVAL).pipe(take(seconds), map(() => {
       seconds = seconds - 1;
       return seconds % 60;
@@ -33,7 +33,7 @@ export class CountdownTimerService {
   }
 
   getMinutes(): Observable<number> {
-    let seconds = Math.floor(this.getMilliseconds() / 1000);
+    let seconds = this.getMilliseconds();
     let minutes = Math.floor(seconds / 60);
     return timer(0, this.INTERVAL).pipe(take(seconds), map(() => {
       seconds = seconds - 1;
@@ -43,7 +43,7 @@ export class CountdownTimerService {
   }
 
   getHours(): Observable<number> {
-    let seconds = Math.floor(this.getMilliseconds() / 1000);
+    let seconds = this.getMilliseconds();
     let minutes = Math.floor(seconds / 60);
     let hours = Math.floor(minutes / 60);
     return timer(0, this.INTERVAL).pipe(take(seconds), map(() => {
@@ -55,7 +55,7 @@ export class CountdownTimerService {
   }
 
   getDays(): Observable<number> {
-    let seconds = Math.floor(this.getMilliseconds() / 1000);
+    let seconds = this.getMilliseconds();
     let minutes = Math.floor(seconds / 60);
     let hours = Math.floor(minutes / 60);
     let days = Math.floor(hours / 24);
