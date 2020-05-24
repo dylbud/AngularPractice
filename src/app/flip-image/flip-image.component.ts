@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { getTestBed } from '@angular/core/testing';
 
 @Component({
   selector: 'app-flip-image',
@@ -12,5 +13,10 @@ export class FlipImageComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  flipHorizontal() {
+    
+  }
+
 
 }

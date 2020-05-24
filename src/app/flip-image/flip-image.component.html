@@ -1,14 +1,19 @@
 
 
 
-<div class="flip-box">
-    <div class="flip-box-inner">
-      <div class="flip-box-front">
-        <img class="img-responsive" [src]="imageUrl"> 
-      </div>
-      <div class="flip-box-back">
-        <h2>This is a cat</h2>
-        <p>He likes to sleep</p>
-      </div>
+<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+  
+  <span class="arrow up"></span>
+  <span class="arrow left"></span>
+  <span class="arrow right"></span>
+  <span class="arrow down"></span>
+  <div class="flipped">
+		<div class="front">
+			<img [src]="imageUrl">
+		</div>
+		<div class="back">
+			<img [src]="imageUrl" style="transform: scaleX(-1);">
     </div>
   </div>
+
+</div>
