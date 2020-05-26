@@ -5,7 +5,6 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -15,8 +14,6 @@ import { TimerComponent } from './countdown-timer/timer/timer.component';
 import { TimerInputComponent } from './countdown-timer/timer-input/timer-input.component';
 import { FlipImageComponent } from './flip-image/flip-image.component';
 import { ReactiveFormExampleComponent } from './reactive-form-example/reactive-form-example.component';
-import { MytestComponent } from './mytest/mytest.component';
-
 
 @NgModule({
   declarations: [
@@ -28,7 +25,6 @@ import { MytestComponent } from './mytest/mytest.component';
     TimerInputComponent,
     FlipImageComponent,
     ReactiveFormExampleComponent,
-    MytestComponent
   ],
   imports: [
     BrowserModule,
@@ -37,10 +33,9 @@ import { MytestComponent } from './mytest/mytest.component';
     TimepickerModule.forRoot(),
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
