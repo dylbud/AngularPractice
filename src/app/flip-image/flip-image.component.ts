@@ -6,9 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./flip-image.component.css'],
 })
 export class FlipImageComponent implements OnInit {
-  horizontallyflipped: boolean;
-  flippedUp: boolean;
-  flippedDown: boolean;
   imageUrl = 'assets/images/cat.jpg';
   xValue: number;
   yValue: number;
@@ -20,27 +17,29 @@ export class FlipImageComponent implements OnInit {
     this.yValue = 0;
   }
 
-  flipRight() {
-    if ((this.xValue / 180) % 2 === 1) {
-      this.yValue = this.yValue - 180;
-    } else {
-      this.yValue = this.yValue + 180;
+  flip(direction: string) {
+    if (direction === 'right') {
+      if ((this.xValue / 180) % 2 === 1) {
+        this.yValue = this.yValue - 180;
+      } else {
+        this.yValue = this.yValue + 180;
+      }
     }
-  }
 
-  flipLeft() {
-    if ((this.xValue / 180) % 2 === 1) {
-      this.yValue = this.yValue + 180;
-    } else {
-      this.yValue = this.yValue - 180;
+    if (direction === 'left') {
+      if ((this.xValue / 180) % 2 === 1) {
+        this.yValue = this.yValue + 180;
+      } else {
+        this.yValue = this.yValue - 180;
+      }
     }
-  }
 
-  flipUp() {
-    this.xValue = this.xValue + 180;
-  }
+    if (direction === 'up') {
+      this.xValue = this.xValue + 180;
+    }
 
-  flipDown() {
-    this.xValue = this.xValue - 180;
+    if (direction === 'down') {
+      this.xValue = this.xValue - 180;
+    }
   }
 }
