@@ -4,10 +4,21 @@
       <a class="navbar-brand" href="#">{{ title }}</a>
     </div>
     <ul class="nav navbar-nav">
-      <li [routerLinkActive]="['active']"><a [routerLink]="['home']">Home</a></li>
-      <li [routerLinkActive]="['active']"><a [routerLink]="['timer']">Timer</a></li>
-      <li [routerLinkActive]="['active']"><a [routerLink]="['flip-image']">Flip Image</a></li>
-      <li [routerLinkActive]="['active']"><a [routerLink]="['reactive-form-example']">Form eg.</a></li>
+      <li [routerLinkActive]="['active']">
+        <a [routerLink]="['home']">Home</a>
+      </li>
+      <li [routerLinkActive]="['active']">
+        <a [routerLink]="['timer']">Timer</a>
+      </li>
+      <li [routerLinkActive]="['active']">
+        <a [routerLink]="['flip-image']">Flip Image</a>
+      </li>
+      <li [routerLinkActive]="['active']">
+        <a [routerLink]="['notes']">Notes</a>
+      </li>
+      <li [routerLinkActive]="['active']">
+        <a [routerLink]="['reactive-form-example']">Form eg.</a>
+      </li>
     </ul>
   </div>
 </nav>
