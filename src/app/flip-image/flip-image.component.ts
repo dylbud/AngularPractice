@@ -14,6 +14,7 @@ export class FlipImageComponent implements OnInit {
   imageUrl = 'assets/images/cat.jpg';
   xValue: number;
   yValue: number;
+
   constructor() {}
 
   ngOnInit() {
