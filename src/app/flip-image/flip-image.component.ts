@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { getTestBed } from '@angular/core/testing';
-import { Stream } from 'stream';
 
 @Component({
   selector: 'app-flip-image',
