@@ -1,19 +1,40 @@
-
-
-
-<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-  
-  <span class="arrow up"></span>
-  <span class="arrow left"></span>
-  <span class="arrow right"></span>
-  <span class="arrow down"></span>
-  <div class="flipped">
-		<div class="front">
-			<img [src]="imageUrl">
-		</div>
-		<div class="back">
-			<img [src]="imageUrl" style="transform: scaleX(-1);">
-    </div>
+<div class="flip-container">
+  <span
+    class="arrow up"
+    (click)="
+      flippedDown
+        ? (flippedDown = false)
+        : !flippedUp
+        ? (flippedUp = true)
+        : (flippedUp = true)
+    "
+  ></span>
+  <span
+    class="arrow left"
+    (click)="horizontallyflipped = !horizontallyflipped"
+  ></span>
+  <span
+    class="arrow right"
+    (click)="horizontallyflipped = !horizontallyflipped"
+  ></span>
+  <span
+    class="arrow down"
+    (click)="
+      flippedUp
+        ? (flippedUp = false)
+        : !flippedDown
+        ? (flippedDown = true)
+        : (flippedDown = true)
+    "
+  ></span>
+  <div
+    class="flippable"
+    [ngClass]="{
+      flippedHorizontal: horizontallyflipped,
+      flippedUp: flippedUp,
+      flippedDown: flippedDown
+    }"
+  >
+    <img [src]="imageUrl" />
   </div>
-
 </div>

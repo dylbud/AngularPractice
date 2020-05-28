@@ -4,19 +4,24 @@ import { getTestBed } from '@angular/core/testing';
 @Component({
   selector: 'app-flip-image',
   templateUrl: './flip-image.component.html',
-  styleUrls: ['./flip-image.component.css']
+  styleUrls: ['./flip-image.component.css'],
 })
 export class FlipImageComponent implements OnInit {
-
+  horizontallyflipped: boolean;
+  flippedUp: boolean;
+  flippedDown: boolean;
   imageUrl = 'assets/images/cat.jpg';
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    this.horizontallyflipped = false;
   }
 
-  flipHorizontal() {
-    
-  }
+  // flipHorizontalCounterClockwise() {}
 
+  // flipHorizontalClockwise() {}
 
+  // flipVerticalUp() {}
+
+  // flipVerticalDown() {}
 }
