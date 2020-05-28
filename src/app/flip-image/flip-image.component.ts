@@ -22,11 +22,19 @@ export class FlipImageComponent implements OnInit {
   }
 
   flipRight() {
-    this.yValue = this.yValue + 180;
+    if ((this.xValue / 180) % 2 === 1) {
+      this.yValue = this.yValue - 180;
+    } else {
+      this.yValue = this.yValue + 180;
+    }
   }
 
   flipLeft() {
-    this.yValue = this.yValue - 180;
+    if ((this.xValue / 180) % 2 === 1) {
+      this.yValue = this.yValue + 180;
+    } else {
+      this.yValue = this.yValue - 180;
+    }
   }
 
   flipUp() {
