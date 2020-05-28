@@ -5,18 +5,6 @@
   height: 400px;
 }
 
-.flippedHorizontal {
-  transform: rotateY(180deg);
-}
-
-.flippedUp {
-  transform: rotateX(180deg);
-}
-
-.flippedDown {
-  transform: rotateX(-180deg);
-}
-
 /* flip speed goes here */
 .flippable {
   /* transform-style: preserve-3d; */

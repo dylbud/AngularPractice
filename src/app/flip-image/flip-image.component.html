@@ -1,38 +1,13 @@
 <div class="flip-container">
-  <span
-    class="arrow up"
-    (click)="
-      flippedDown
-        ? (flippedDown = false)
-        : !flippedUp
-        ? (flippedUp = true)
-        : (flippedUp = true)
-    "
-  ></span>
-  <span
-    class="arrow left"
-    (click)="horizontallyflipped = !horizontallyflipped"
-  ></span>
-  <span
-    class="arrow right"
-    (click)="horizontallyflipped = !horizontallyflipped"
-  ></span>
-  <span
-    class="arrow down"
-    (click)="
-      flippedUp
-        ? (flippedUp = false)
-        : !flippedDown
-        ? (flippedDown = true)
-        : (flippedDown = true)
-    "
-  ></span>
+  <span class="arrow up" (click)="flipUp()"></span>
+  <span class="arrow left" (click)="flipLeft()"></span>
+  <span class="arrow right" (click)="flipRight()"></span>
+  <span class="arrow down" (click)="flipDown()"></span>
   <div
     class="flippable"
-    [ngClass]="{
-      flippedHorizontal: horizontallyflipped,
-      flippedUp: flippedUp,
-      flippedDown: flippedDown
+    [ngStyle]="{
+      transform: 'rotateX(' + xValue + 'deg) 
+      rotateY(' + yValue + 'deg)'
     }"
   >
     <img [src]="imageUrl" />

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { getTestBed } from '@angular/core/testing';
+import { Stream } from 'stream';
 
 @Component({
   selector: 'app-flip-image',
@@ -11,17 +12,28 @@ export class FlipImageComponent implements OnInit {
   flippedUp: boolean;
   flippedDown: boolean;
   imageUrl = 'assets/images/cat.jpg';
+  xValue: number;
+  yValue: number;
   constructor() {}
 
   ngOnInit() {
-    this.horizontallyflipped = false;
+    this.xValue = 0;
+    this.yValue = 0;
   }
 
-  // flipHorizontalCounterClockwise() {}
+  flipRight() {
+    this.yValue = this.yValue + 180;
+  }
 
-  // flipHorizontalClockwise() {}
+  flipLeft() {
+    this.yValue = this.yValue - 180;
+  }
 
-  // flipVerticalUp() {}
+  flipUp() {
+    this.xValue = this.xValue + 180;
+  }
 
-  // flipVerticalDown() {}
+  flipDown() {
+    this.xValue = this.xValue - 180;
+  }
 }
