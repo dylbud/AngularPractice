@@ -19,7 +19,7 @@ export class FlipImageComponent implements OnInit {
 
   flip(direction: string) {
     if (direction === 'right') {
-      if ((this.xValue / 180) % 2 === 1) {
+      if (Math.abs((this.xValue / 180) % 2) === 1) {
         this.yValue = this.yValue - 180;
       } else {
         this.yValue = this.yValue + 180;
@@ -27,7 +27,7 @@ export class FlipImageComponent implements OnInit {
     }
 
     if (direction === 'left') {
-      if ((this.xValue / 180) % 2 === 1) {
+      if (Math.abs((this.xValue / 180) % 2) === 1) {
         this.yValue = this.yValue + 180;
       } else {
         this.yValue = this.yValue - 180;

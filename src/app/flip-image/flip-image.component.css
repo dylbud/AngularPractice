@@ -8,7 +8,7 @@
 /* flip speed goes here */
 .flippable {
   /* transform-style: preserve-3d; */
-  transition: 1.5s;
+  transition: 3s;
   position: relative;
 }
 
