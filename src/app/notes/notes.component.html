@@ -55,12 +55,16 @@
       <p>{{ note.body }}</p>
     </div>
   </div>
-  <a class="glyphicon glyphicon-remove" title="Delete" (click)="delete(i)"></a>
-  <a
+  <span
+    class="glyphicon glyphicon-remove"
+    title="Delete"
+    (click)="delete(i)"
+  ></span>
+  <span
     class="glyphicon glyphicon-edit"
     title="Edit"
     (click)="selectNoteToEdit(i)"
   >
-  </a>
+  </span>
   <hr />
 </div>

@@ -56,7 +56,9 @@ export class NotesComponent implements OnInit {
   }
 
   clearAllNotes() {
-    if (confirm('Are you sure?')) {
+    if (
+      confirm('Are you sure you want to permanently delete all your notes?')
+    ) {
       this.notes = [];
       this.setStorage();
       this.clearForm();
@@ -64,8 +66,10 @@ export class NotesComponent implements OnInit {
   }
 
   delete(index: number) {
-    this.notes.splice(index, 1);
-    this.setStorage();
+    if (confirm('Are you sure you want to delete this note?')) {
+      this.notes.splice(index, 1);
+      this.setStorage();
+    }
   }
 
   selectNoteToEdit(index: number) {
@@ -85,5 +89,6 @@ export class NotesComponent implements OnInit {
     this.notes[this.editingIndex].body = this.body.value;
     this.setStorage();
     this.showEditButton = false;
+    this.clearForm();
   }
 }

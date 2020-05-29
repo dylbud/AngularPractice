@@ -1,9 +1,9 @@
-a:hover {
+.glyphicon:hover {
   cursor: pointer;
 }
 
 .glyphicon-edit:hover {
-  color: gray;
+  color: lightseagreen;
 }
 
 .glyphicon-remove:hover {
