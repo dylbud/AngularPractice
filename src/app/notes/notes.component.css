@@ -3,11 +3,11 @@ a:hover {
 }
 
 .glyphicon-edit:hover {
-  color: blue;
+  color: gray;
 }
 
 .glyphicon-remove:hover {
-  color: red;
+  color: tomato;
 }
 
 .glyphicon {
