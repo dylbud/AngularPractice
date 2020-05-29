@@ -27,10 +27,20 @@
       >
         Edit
       </button>
-      <button class="btn btn-warning" (click)="clearForm()" type="button" [disabled]="subject.invalid && body.invalid">
+      <button
+        class="btn btn-warning"
+        (click)="clearForm()"
+        type="button"
+        [disabled]="subject.invalid && body.invalid"
+      >
         Cancel
       </button>
-      <button class="btn btn-danger" (click)="clearAllNotes()" type="button" [disabled]="notes.length === 0">
+      <button
+        class="btn btn-danger"
+        (click)="clearAllNotes()"
+        type="button"
+        [disabled]="notes.length === 0"
+      >
         Clear All
       </button>
     </div>
@@ -45,11 +55,12 @@
       <p>{{ note.body }}</p>
     </div>
   </div>
+  <a class="glyphicon glyphicon-remove" title="Delete" (click)="delete(i)"></a>
   <a
-    class="glyphicon glyphicon-remove"
+    class="glyphicon glyphicon-edit"
     title="Edit"
-    (click)="delete(i)"
-  ></a>
-  <a class="glyphicon glyphicon-edit" title="Delete" (click)="selectNoteToEdit(i)"> </a>
+    (click)="selectNoteToEdit(i)"
+  >
+  </a>
   <hr />
 </div>
