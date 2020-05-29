@@ -69,6 +69,7 @@ export class NotesComponent implements OnInit {
     if (confirm('Are you sure you want to delete this note?')) {
       this.notes.splice(index, 1);
       this.setStorage();
+      this.clearForm();
     }
   }
 
