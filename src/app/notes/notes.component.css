@@ -1,0 +1,19 @@
+a:hover {
+  cursor: pointer;
+}
+
+.glyphicon-edit:hover {
+  color: blue;
+}
+
+.glyphicon-remove:hover {
+  color: red;
+}
+
+.glyphicon {
+  padding-right: 5px;
+  float: right;
+  color: lightgray;
+  position: relative;
+  top: -52px;
+}

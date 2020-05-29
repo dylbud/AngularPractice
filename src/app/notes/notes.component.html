@@ -1,1 +1,55 @@
-<p>notes works!</p>
+<section class="sample-app-content">
+  <h1>Notes</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label class="form-label">Subject: </label>
+      <input class="form-control" type="text" formControlName="subject" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Note: </label>
+      <textarea class="form-control" formControlName="body"></textarea>
+    </div>
+    <div class="btn-toolbar">
+      <button
+        *ngIf="!showEditButton"
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!form.valid"
+      >
+        Save
+      </button>
+      <button
+        *ngIf="showEditButton"
+        class="btn btn-primary"
+        type="button"
+        [disabled]="!form.valid"
+        (click)="edit()"
+      >
+        Edit
+      </button>
+      <button class="btn btn-warning" (click)="clearForm()" type="button">
+        Cancel
+      </button>
+      <button class="btn btn-danger" (click)="clearAllNotes()" type="button">
+        Clear All
+      </button>
+    </div>
+  </form>
+</section>
+<br />
+<hr *ngIf="notes.length > 0" />
+<div *ngFor="let note of notes; index as i">
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">{{ note.subject }}</h4>
+      <p>{{ note.body }}</p>
+    </div>
+  </div>
+  <a
+    class="glyphicon glyphicon-edit"
+    title="Edit"
+    (click)="selectNoteToEdit(i)"
+  ></a>
+  <a class="glyphicon glyphicon-remove" title="Delete" (click)="delete(i)"> </a>
+  <hr />
+</div>
