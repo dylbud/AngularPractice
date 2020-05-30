@@ -37,7 +37,7 @@
       </button>
       <button
         class="btn btn-danger"
-        (click)="clearAllNotes()"
+        (click)="openModal(clearAllTemplate)"
         type="button"
         [disabled]="notes.length === 0"
       >
@@ -58,7 +58,7 @@
   <span
     class="glyphicon glyphicon-remove"
     title="Delete"
-    (click)="delete(i)"
+    (click)="openModal(deleteTemplate)"
   ></span>
   <span
     class="glyphicon glyphicon-edit"
@@ -68,3 +68,25 @@
   </span>
   <hr />
 </div>
+<ng-template #deleteTemplate>
+  <div class="modal-body text-center">
+    <p>Delete this note?</p>
+    <button type="button" class="btn btn-danger" (click)="delete(i)">
+      Delete
+    </button>
+    <button type="button" class="btn" (click)="decline()">
+      Cancel
+    </button>
+  </div>
+</ng-template>
+<ng-template #clearAllTemplate>
+  <div class="modal-body text-center">
+    <p>Permanently delete all your notes?</p>
+    <button type="button" class="btn btn-danger" (click)="clearAllNotes()">
+      Delete
+    </button>
+    <button type="button" class="btn" (click)="decline()">
+      Cancel
+    </button>
+  </div>
+</ng-template>

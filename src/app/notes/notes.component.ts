@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import {
   FormGroup,
   FormControl,
   Validators,
   FormBuilder,
 } from '@angular/forms';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 export class Note {
   subject: string;
@@ -17,6 +18,7 @@ export class Note {
   styleUrls: ['./notes.component.css'],
 })
 export class NotesComponent implements OnInit {
+  modalRef: BsModalRef;
   form: FormGroup;
   subject = new FormControl('', Validators.required);
   showEditButton = false;
@@ -25,7 +27,7 @@ export class NotesComponent implements OnInit {
 
   notes: Note[];
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, private modalService: BsModalService) {
     this.form = fb.group({
       subject: this.subject,
       body: this.body,
@@ -61,16 +63,16 @@ export class NotesComponent implements OnInit {
     ) {
       this.notes = [];
       this.setStorage();
+      this.modalRef.hide();
       this.clearForm();
     }
   }
 
   delete(index: number) {
-    if (confirm('Are you sure you want to delete this note?')) {
-      this.notes.splice(index, 1);
-      this.setStorage();
-      this.clearForm();
-    }
+    this.notes.splice(index, 1);
+    this.setStorage();
+    this.modalRef.hide();
+    this.clearForm();
   }
 
   selectNoteToEdit(index: number) {
@@ -91,5 +93,13 @@ export class NotesComponent implements OnInit {
     this.setStorage();
     this.showEditButton = false;
     this.clearForm();
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+  }
+
+  decline() {
+    this.modalRef.hide();
   }
 }
