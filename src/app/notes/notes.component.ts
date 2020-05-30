@@ -37,7 +37,7 @@ export class NotesComponent implements OnInit {
       subject: this.subject.value,
       body: this.body.value,
     };
-    this.notes.push(newNote);
+    this.notes.unshift(newNote);
     this.setStorage();
     this.clearForm();
   }
