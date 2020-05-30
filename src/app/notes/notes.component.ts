@@ -58,14 +58,10 @@ export class NotesComponent implements OnInit {
   }
 
   clearAllNotes() {
-    if (
-      confirm('Are you sure you want to permanently delete all your notes?')
-    ) {
-      this.notes = [];
-      this.setStorage();
-      this.modalRef.hide();
-      this.clearForm();
-    }
+    this.notes = [];
+    this.setStorage();
+    this.modalRef.hide();
+    this.clearForm();
   }
 
   delete(index: number) {
