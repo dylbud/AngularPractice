@@ -16,6 +16,9 @@ import { TimerInputComponent } from './countdown-timer/timer-input/timer-input.c
 import { FlipImageComponent } from './flip-image/flip-image.component';
 import { ReactiveFormExampleComponent } from './reactive-form-example/reactive-form-example.component';
 import { NotesComponent } from './notes/notes.component';
+import { RecipesComponent } from './recipes/recipes.component';
+import { RecipeCardComponent } from './recipes/recipe-card/recipe-card.component';
+import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { NotesComponent } from './notes/notes.component';
     FlipImageComponent,
     ReactiveFormExampleComponent,
     NotesComponent,
+    RecipesComponent,
+    RecipeCardComponent,
+    RecipeListComponent,
   ],
   imports: [
     BrowserModule,
