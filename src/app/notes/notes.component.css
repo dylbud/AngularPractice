@@ -22,3 +22,12 @@
   margin-left: 3px;
   margin-right: 3px;
 }
+
+:host >>> .tooltip-inner {
+  background-color: gainsboro;
+  color: black;
+}
+:host >>> .tooltip.top .tooltip-arrow:before,
+:host >>> .tooltip.top .tooltip-arrow {
+  border-top-color: gainsboro;
+}
