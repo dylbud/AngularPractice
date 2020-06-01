@@ -17,3 +17,8 @@
   position: relative;
   top: -52px;
 }
+
+.modal-body button {
+  margin-left: 3px;
+  margin-right: 3px;
+}
