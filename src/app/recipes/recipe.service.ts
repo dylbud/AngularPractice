@@ -9,9 +9,9 @@ import { catchError, retry } from 'rxjs/operators';
 export class RecipeService {
   constructor(private http: HttpClient) {}
 
-  getRecipes(): Observable<object> {
+  searchRecipes(searchTerm: string): Observable<object> {
     return this.http.get(
-      'https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata',
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`,
       { responseType: 'json' }
     );
   }
