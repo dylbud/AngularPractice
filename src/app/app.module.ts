@@ -19,7 +19,6 @@ import { FlipImageComponent } from './flip-image/flip-image.component';
 import { ReactiveFormExampleComponent } from './reactive-form-example/reactive-form-example.component';
 import { NotesComponent } from './notes/notes.component';
 import { RecipesComponent } from './recipes/recipes.component';
-import { RecipeCardComponent } from './recipes/recipe-card/recipe-card.component';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 
 @NgModule({
@@ -34,7 +33,6 @@ import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component
     ReactiveFormExampleComponent,
     NotesComponent,
     RecipesComponent,
-    RecipeCardComponent,
     RecipeListComponent,
   ],
   imports: [
