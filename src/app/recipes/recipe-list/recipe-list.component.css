@@ -1,0 +1,10 @@
+.media:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.mealImage {
+  height: 250px;
+  width: 250px;
+  float: right;
+}
