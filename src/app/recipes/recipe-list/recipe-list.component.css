@@ -8,3 +8,12 @@
   width: 250px;
   float: right;
 }
+
+.mealArea {
+  display: inline;
+  font-style: italic;
+}
+
+.media-heading {
+  display: inline;
+}

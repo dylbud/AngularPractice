@@ -36,11 +36,15 @@ export class RecipeListComponent implements OnInit {
 
   ngOnInit() {
     this.ingredients = new Array<IngredientMeasure>();
+    this.service.searchRecipes('').subscribe((data) => {
+      this.data = data;
+    });
   }
 
   onSubmit() {
     this.service.searchRecipes(this.searchTerm.value).subscribe((data) => {
       this.data = data;
+      console.log(data);
     });
   }
 

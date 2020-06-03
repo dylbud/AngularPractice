@@ -14,7 +14,6 @@
       </div>
     </div>
   </form>
-  <!-- <hr *ngIf="data?.meals.length > 0" /> -->
 
   <div
     *ngFor="let meal of data?.meals; index as i"
@@ -23,6 +22,7 @@
   >
     <div class="media-body">
       <h4 class="media-heading">{{ meal.strMeal }}</h4>
+      <span class="mealArea"> ({{ meal.strArea }})</span>
       <p>
         {{ meal.strIngredient1 }}, {{ meal.strIngredient2 }},
         {{ meal.strIngredient3 }}...
