@@ -20,6 +20,7 @@ import { ReactiveFormExampleComponent } from './reactive-form-example/reactive-f
 import { NotesComponent } from './notes/notes.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
+import { QuizzlerComponent } from './quizzler/quizzler.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component
     NotesComponent,
     RecipesComponent,
     RecipeListComponent,
+    QuizzlerComponent,
   ],
   imports: [
     BrowserModule,
