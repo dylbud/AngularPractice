@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizzlerService } from './quizzler.service';
+import { QuizItem, Quiz } from './quizzler.models';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-quizzler',
@@ -7,14 +9,11 @@ import { QuizzlerService } from './quizzler.service';
   styleUrls: ['./quizzler.component.css'],
 })
 export class QuizzlerComponent implements OnInit {
-  data: object;
+  quiz: Quiz;
 
   constructor(private service: QuizzlerService) {}
 
   ngOnInit() {
-    this.service.getQuiz('hard').subscribe((data) => {
-      this.data = data;
-      console.log(data);
-    });
+    this.service.getQuiz('hard').subscribe((data) => console.log(data.results));
   }
 }
