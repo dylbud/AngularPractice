@@ -14,6 +14,9 @@ export class QuizzlerComponent implements OnInit {
   constructor(private service: QuizzlerService) {}
 
   ngOnInit() {
-    this.service.getQuiz('hard').subscribe((data) => console.log(data.results));
+    this.service.getQuiz('hard')
+    .pipe(map(data => data.results), map(data => this.quiz = data))
+    .subscribe();
+    console.log(this.quiz);
   }
 }

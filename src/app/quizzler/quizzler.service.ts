@@ -10,8 +10,8 @@ import { QuizItem, Quiz } from './quizzler.models';
 export class QuizzlerService {
   constructor(private http: HttpClient) {}
 
-  getQuiz(difficulty: string): Observable<Quiz> {
-    return this.http.get<any>(
+  getQuiz(difficulty: string): Observable<any> {
+    return this.http.get(
       `https://opentdb.com/api.php?amount=10&category=20&difficulty=${difficulty}`,
       { responseType: 'json' }
     );
