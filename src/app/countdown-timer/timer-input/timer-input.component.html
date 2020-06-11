@@ -1,40 +1,87 @@
-<form class="form-horizontal" #timerForm="ngForm" (ngSubmit)="submitEvent(timerForm)">
-  <div class="form-group" [class.has-error]="eventNameCtrl.invalid && eventNameCtrl.touched" [class.has-success]="eventNameCtrl.valid">
+<form
+  class="form-horizontal"
+  #timerForm="ngForm"
+  (ngSubmit)="submitEvent(timerForm)"
+>
+  <div
+    class="form-group"
+    [class.has-error]="eventNameCtrl.invalid && eventNameCtrl.touched"
+    [class.has-success]="eventNameCtrl.valid"
+  >
     <label class="control-label col-sm-2" for="eventName">Event Name:</label>
     <div class="col-sm-6">
-      <input required type="eventName" name="eventName" [(ngModel)]="eventName" class="form-control"
-      id="eventName" placeholder="Enter event name" #eventNameCtrl="ngModel">
-      <span class="help-block" *ngIf="eventNameCtrl.invalid && eventNameCtrl.touched">
+      <input
+        required
+        type="eventName"
+        name="eventName"
+        [(ngModel)]="eventName"
+        class="form-control"
+        id="eventName"
+        placeholder="Enter event name"
+        #eventNameCtrl="ngModel"
+      />
+      <span
+        class="help-block"
+        *ngIf="eventNameCtrl.invalid && eventNameCtrl.touched"
+      >
         Event name is required!
       </span>
     </div>
   </div>
-  <div class="form-group" [class.has-error]="eventDateCtrl.invalid && eventDateCtrl.touched" [class.has-success]="eventDateCtrl.valid">
+  <div
+    class="form-group"
+    [class.has-error]="eventDateCtrl.invalid && eventDateCtrl.touched"
+    [class.has-success]="eventDateCtrl.valid"
+  >
     <label class="control-label col-sm-2" for="eventDate">Date:</label>
     <div class="col-sm-6">
-      <input required type="text" class="form-control" name="eventDate" [(ngModel)]="eventDate"
-      id="eventDate" placeholder="Enter date" bsDatepicker [bsConfig]="datePickerConfig" #eventDateCtrl="ngModel" />
-      <span class="help-block" *ngIf="eventDateCtrl.invalid && eventDateCtrl.touched">
+      <input
+        required
+        type="text"
+        class="form-control"
+        name="eventDate"
+        [(ngModel)]="eventDate"
+        id="eventDate"
+        placeholder="Enter date"
+        bsDatepicker
+        [bsConfig]="datePickerConfig"
+        #eventDateCtrl="ngModel"
+      />
+      <span
+        class="help-block"
+        *ngIf="eventDateCtrl.invalid && eventDateCtrl.touched"
+      >
         Event date is required!
       </span>
     </div>
   </div>
-  <div class="form-group"  [class.has-error]="!validateTime()" [class.has-success]="eventTimeCtrl.dirty && validateTime()">
+  <div
+    class="form-group"
+    [class.has-error]="!validateTime()"
+    [class.has-success]="eventTimeCtrl.dirty && validateTime()"
+  >
     <label class="control-label col-sm-2" for="date">Time (optional):</label>
     <div class="col-sm-6">
-      <timepicker id="eventTime" name="eventTime" [(ngModel)]="eventTime" #eventTimeCtrl="ngModel" (mouseup)="test(timerForm)"></timepicker>
+      <timepicker
+        id="eventTime"
+        name="eventTime"
+        [(ngModel)]="eventTime"
+        #eventTimeCtrl="ngModel"
+      ></timepicker>
       <span class="help-block" *ngIf="!validateTime()">
         Event must be in the future!
       </span>
     </div>
-
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default" [disabled]="timerForm.invalid">Start</button>
+      <button
+        type="submit"
+        class="btn btn-default"
+        [disabled]="timerForm.invalid"
+      >
+        Start
+      </button>
     </div>
   </div>
-
-
-
-  
+</form>
