@@ -8,13 +8,14 @@
           *ngFor="let quizItemAnswer of quizItem.quizItemAnswers; index as j"
           class="radio"
         >
-          <label
+          <label [ngClass]="{'correct': quizItemAnswer.isCorrect, 'incorrect': !quizItemAnswer.isCorrect}"
             ><input
+
               type="radio"
               name="{{ 'formControl' + i }}"
               formControlName="{{ 'formControl' + i }}"
-              [value]="quizItemAnswer.isCorrect"
-              (click)="isCorrect(quizItemAnswer.isCorrect)"
+              [value]="quizItemAnswer"
+              (change)="submit()"
             />{{ quizItemAnswer.value }}</label
           >
         </div>

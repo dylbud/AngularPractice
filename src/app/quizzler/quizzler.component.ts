@@ -26,9 +26,7 @@ export class QuizzlerComponent implements OnInit {
     private service: QuizzlerService,
     private formBuilder: FormBuilder
   ) {
-    this.form = this.formBuilder.group({
-      quizItems: QuizItem[]
-    });
+    this.form = this.formBuilder.group({});
   }
 
   submit() {
@@ -45,6 +43,10 @@ export class QuizzlerComponent implements OnInit {
           console.log(this.quiz);
           this.quizItems = this.getQuizItems();
           console.log(this.quizItems);
+          this.quizItems.forEach((qi, i) => {
+            this.form.addControl(`formControl${i}`,
+            this.formBuilder.control(null, null));
+          });
         },
         (error) => console.log(error)
       );
