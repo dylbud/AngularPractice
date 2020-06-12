@@ -1,1 +1,24 @@
-<p>quizzler works!</p>
+<h3>Mythology Quiz</h3>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div *ngFor="let quizItem of quizItems; index as i">
+    <div class="panel panel-default">
+      <div class="panel-heading" [innerHTML]="quizItem.question"></div>
+      <div class="panel-body">
+        <div
+          *ngFor="let quizItemAnswer of quizItem.quizItemAnswers; index as j"
+          class="radio"
+        >
+          <label
+            ><input
+              type="radio"
+              name="{{ 'formControl' + i }}"
+              formControlName="{{ 'formControl' + i }}"
+              [value]="quizItemAnswer.isCorrect"
+              (click)="isCorrect(quizItemAnswer.isCorrect)"
+            />{{ quizItemAnswer.value }}</label
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

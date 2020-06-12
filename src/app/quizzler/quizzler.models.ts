@@ -1,15 +1,25 @@
 export class QuizItem {
   constructor(
-  category: string,
-  correctAnswer: string,
-  difficulty: string,
-  incorrectAnswers: string[],
-  question: string,
-  type: string) { }
-
-
+    public category: string,
+    public correctAnswer: string,
+    public difficulty: string,
+    public incorrectAnswers: string[],
+    public question: string,
+    public type: string,
+    public quizItemAnswers: QuizItemAnswer[]
+  ) {}
 }
 
 export class Quiz {
-  questions: QuizItem[];
+  quizItems: QuizItem[];
+  quizItemColor: string;
+
+  constructor() {
+    this.quizItems = new Array<QuizItem>();
+  }
+}
+
+export class QuizItemAnswer {
+  value: string;
+  isCorrect: boolean;
 }
