@@ -12,7 +12,7 @@ export class QuizzlerService {
 
   getQuiz(difficulty: string): Observable<any> {
     return this.http.get(
-      `https://opentdb.com/api.php?amount=10&category=20&difficulty=${difficulty}`,
+      `https://opentdb.com/api.php?amount=7&category=20&difficulty=${difficulty}`,
       { responseType: 'json' }
     );
   }

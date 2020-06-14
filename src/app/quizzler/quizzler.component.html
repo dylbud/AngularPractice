@@ -1,25 +1,89 @@
-<h3>Mythology Quiz</h3>
-<form [formGroup]="form" (ngSubmit)="submit()">
-  <div *ngFor="let quizItem of quizItems; index as i">
-    <div class="panel panel-default">
-      <div class="panel-heading" [innerHTML]="quizItem.question"></div>
-      <div class="panel-body">
-        <div
-          *ngFor="let quizItemAnswer of quizItem.quizItemAnswers; index as j"
-          class="radio"
-        >
-          <label [ngClass]="{'correct': quizItemAnswer.isCorrect, 'incorrect': !quizItemAnswer.isCorrect}"
-            ><input
-
-              type="radio"
-              name="{{ 'formControl' + i }}"
-              formControlName="{{ 'formControl' + i }}"
-              [value]="quizItemAnswer"
-              (change)="submit()"
-            />{{ quizItemAnswer.value }}</label
+<div>
+  <h2 class="header">Mythology Quiz - Level: {{ difficulty }}</h2>
+  <div class="btn-toolbar">
+    <button
+      class="btn btn-primary"
+      [ngClass]="{ active: difficulty === 'easy' }"
+      type="button"
+      (click)="startQuiz('easy')"
+    >
+      Easy
+    </button>
+    <button
+      class="btn btn-warning"
+      [ngClass]="{ active: difficulty === 'medium' }"
+      (click)="startQuiz('medium')"
+      type="button"
+    >
+      Medium
+    </button>
+    <button
+      class="btn btn-danger"
+      [ngClass]="{ active: difficulty === 'hard' }"
+      (click)="startQuiz('hard')"
+      type="button"
+    >
+      Hard
+    </button>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="submit(displayScoreTemplate)">
+    <div *ngFor="let quizItem of quiz?.quizItems; index as i">
+      <div class="panel panel-default">
+        <div class="panel-heading" [innerHTML]="quizItem.question"></div>
+        <div class="panel-body">
+          <div
+            *ngFor="let quizItemAnswer of quizItem.quizItemAnswers; index as j"
+            class="radio"
           >
+            <label
+              [ngClass]="{
+                correct:
+                  quizItemAnswer.isCorrect &&
+                  hasBeenSubmitted &&
+                  isChecked(i, quizItemAnswer.value),
+                incorrect:
+                  !quizItemAnswer.isCorrect &&
+                  hasBeenSubmitted &&
+                  isChecked(i, quizItemAnswer.value)
+              }"
+              ><input
+                type="radio"
+                name="{{ 'formControl' + i }}"
+                formControlName="{{ 'formControl' + i }}"
+                [value]="quizItemAnswer"
+                [attr.disabled]="hasBeenSubmitted || null" /><span
+                [innerHTML]="quizItemAnswer.value"
+              ></span
+            ></label>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</form>
+    <button
+      id="getScoreButton"
+      type="submit"
+      [disabled]="form.invalid"
+      [ngClass]="{ hidden: !quiz }"
+      class="btn btn-primary"
+    >
+      Get Score
+    </button>
+  </form>
+  <ng-template #displayScoreTemplate>
+    <div class="modal-body text-center">
+      <p>You got {{ getScore('message') }} of 7 correct!</p>
+      <button type="button" class="btn btn-danger" (click)="reviewResponses()">
+        Review Responses
+      </button>
+      <button
+        [ngClass]="{ hidden: difficulty === 'hard' }"
+        type="button"
+        class="btn btn-success"
+        [disabled]="getScore('button') < 5"
+        (click)="tryNext()"
+      >
+        Next Level
+      </button>
+    </div>
+  </ng-template>
+</div>

@@ -5,3 +5,33 @@
 .correct {
   color: blue;
 }
+
+.modal-body button {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.btn-toolbar {
+  margin-bottom: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.panel-heading {
+  background-image: url('../../assets/images/mocaic-transparent.png');
+  background-size: contain;
+  font-weight: bold;
+  font-size: 18px;
+  color: indigo;
+}
+
+.panel {
+  font-family: Helvetica;
+}
+
+#getScoreButton {
+  margin-bottom: 50px;
+  background-color: indigo;
+}

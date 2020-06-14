@@ -1,15 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { QuizzlerService } from './quizzler.service';
 import { QuizItem, Quiz, QuizItemAnswer } from './quizzler.models';
 import { map } from 'rxjs/operators';
-import {
-  FormBuilder,
-  FormGroup,
-  FormArray,
-  FormControl,
-  ValidatorFn,
-} from '@angular/forms';
-import { concat } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-quizzler',
@@ -17,35 +11,47 @@ import { concat } from 'rxjs';
   styleUrls: ['./quizzler.component.css'],
 })
 export class QuizzlerComponent implements OnInit {
-  data: object[];
+  difficulty: string;
+  modalRef: BsModalRef;
   quiz: Quiz;
   form: FormGroup;
-  quizItems: QuizItem[];
+  hasBeenSubmitted = false;
 
   constructor(
     private service: QuizzlerService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private modalService: BsModalService
   ) {
     this.form = this.formBuilder.group({});
   }
 
-  submit() {
-    console.log(this.form.value);
+  submit(template: TemplateRef<any>) {
+    console.log(this.form);
+    this.hasBeenSubmitted = true;
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
 
   ngOnInit() {
+    this.startQuiz('easy');
+  }
+
+  startQuiz(difficulty) {
+    this.difficulty = difficulty;
+    this.hasBeenSubmitted = false;
+    this.difficulty = difficulty;
     this.service
-      .getQuiz('easy')
+      .getQuiz(this.difficulty)
       .pipe(map((data) => data.results))
       .subscribe(
         (data) => {
+          console.log(data);
           this.quiz = this.parseResponse(data);
           console.log(this.quiz);
-          this.quizItems = this.getQuizItems();
-          console.log(this.quizItems);
-          this.quizItems.forEach((qi, i) => {
-            this.form.addControl(`formControl${i}`,
-            this.formBuilder.control(null, null));
+          this.quiz.quizItems.forEach((qi, i) => {
+            this.form.addControl(
+              `formControl${i}`,
+              this.formBuilder.control(null, Validators.required)
+            );
           });
         },
         (error) => console.log(error)
@@ -87,11 +93,31 @@ export class QuizzlerComponent implements OnInit {
     return quizItemAnswers;
   }
 
-  isCorrect(isCorrect: boolean) {
-    console.log(isCorrect);
+  getScore(message: string) {
+    console.log(message);
+    return Object.values(this.form.controls).filter((fc) => fc.value.isCorrect)
+      .length;
   }
 
-  getQuizItems() {
-    return this.quiz.quizItems;
+  reviewResponses() {
+    this.modalRef.hide();
+  }
+
+  isChecked(i: number, currentValue: string): boolean {
+    if (this.form.get(`formControl${i}`).value.value === currentValue) {
+      return true;
+    }
+    return false;
+  }
+
+  tryNext() {
+    if (this.difficulty === 'easy') {
+      this.difficulty = 'medium';
+    } else if (this.difficulty === 'medium') {
+      this.difficulty = 'hard';
+    }
+    this.startQuiz(this.difficulty);
+    this.modalRef.hide();
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 }
