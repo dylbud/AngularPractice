@@ -4,34 +4,33 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- master
+  - master
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
 
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build
-  displayName: 'npm install and build'
+  - script: |
+      npm install -g @angular/cli
+      npm install
+      ng build
+    displayName: 'npm install and build'
 
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'drop'
-    publishLocation: 'pipeline'
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Pipeline.Workspace)'
+      artifact: 'drop'
+      publishLocation: 'pipeline'
 
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'Azure subscription 1(c7069b1c-c8b0-494f-86c1-6d638da2309c)'
-    appType: 'webApp'
-    appName: 'dylbudbragg'
-    package: '$(Pipeline.Workspace)/**/*.zip'
-    deploymentMethod: 'auto'
-
+  - task: AzureWebApp@1
+    inputs:
+      azureSubscription: 'Azure subscription 1(c7069b1c-c8b0-494f-86c1-6d638da2309c)'
+      appType: 'webApp'
+      appName: 'dylbudbragg'
+      package: '$(Pipeline.Workspace)/dist/AngularPractice'
+      deploymentMethod: 'auto'
