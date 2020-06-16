@@ -32,5 +32,5 @@ steps:
       azureSubscription: 'Azure subscription 1(c7069b1c-c8b0-494f-86c1-6d638da2309c)'
       appType: 'webApp'
       appName: 'dylbudbragg'
-      package: '$(Pipeline.Workspace)/dist/AngularPractice'
+      package: '$(Pipeline.Workspace)/s/dist/AngularPractice'
       deploymentMethod: 'auto'
