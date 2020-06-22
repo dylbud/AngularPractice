@@ -49,8 +49,12 @@
 <br />
 <hr *ngIf="notes.length > 0" />
 <div *ngFor="let note of notes; index as i">
-  <div class="media">
-    <div class="media-body">
+  <div class="media" [ngClass]="{ edit: editingIndex === i }">
+    <div *ngIf="editingIndex === i" class="media-body">
+      <h4 class="media-heading">{{ subject.value }}</h4>
+      <p>{{ body.value }}</p>
+    </div>
+    <div *ngIf="editingIndex !== i" class="media-body">
       <h4 class="media-heading">{{ note.subject }}</h4>
       <p>{{ note.body }}</p>
     </div>

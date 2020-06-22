@@ -81,6 +81,7 @@ export class NotesComponent implements OnInit {
   clearForm() {
     this.form.reset();
     this.showEditButton = false;
+    this.editingIndex = -1;
   }
 
   edit() {

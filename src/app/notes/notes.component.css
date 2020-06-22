@@ -31,3 +31,7 @@
 :host >>> .tooltip.top .tooltip-arrow {
   border-top-color: gainsboro;
 }
+
+.edit {
+  color: lightgray;
+}
