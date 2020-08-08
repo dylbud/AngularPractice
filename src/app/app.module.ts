@@ -4,7 +4,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -18,9 +18,9 @@ import { TimerInputComponent } from './countdown-timer/timer-input/timer-input.c
 import { FlipImageComponent } from './flip-image/flip-image.component';
 import { ReactiveFormExampleComponent } from './reactive-form-example/reactive-form-example.component';
 import { NotesComponent } from './notes/notes.component';
-import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 import { QuizzlerComponent } from './quizzler/quizzler.component';
+import { RecipeModalComponent } from './recipes/recipe-modal/recipe-modal.component';
 
 @NgModule({
   declarations: [
@@ -33,9 +33,9 @@ import { QuizzlerComponent } from './quizzler/quizzler.component';
     FlipImageComponent,
     ReactiveFormExampleComponent,
     NotesComponent,
-    RecipesComponent,
     RecipeListComponent,
     QuizzlerComponent,
+    RecipeModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +49,8 @@ import { QuizzlerComponent } from './quizzler/quizzler.component';
     TooltipModule.forRoot(),
     HttpClientModule,
   ],
-  providers: [],
+  entryComponents: [RecipeModalComponent],
+  providers: [BsModalRef],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

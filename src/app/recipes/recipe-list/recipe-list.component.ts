@@ -1,13 +1,9 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { RecipeService } from '../recipe.service';
 import { Observable } from 'rxjs';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-
-export class IngredientMeasure {
-  measure: string;
-  ingredient: string;
-}
+import { RecipeFacade, RecipeState, Recipe } from '../recipe-facade.service';
+import { RecipeModalComponent } from '../recipe-modal/recipe-modal.component';
 
 @Component({
   selector: 'app-recipe-list',
@@ -15,53 +11,29 @@ export class IngredientMeasure {
   styleUrls: ['./recipe-list.component.css'],
 })
 export class RecipeListComponent implements OnInit {
-  data: object;
-  form: FormGroup;
-  searchTerm: FormControl = new FormControl();
   modalRef: BsModalRef;
-  mealTitle: string;
-  ingredients: IngredientMeasure[];
-  instructions: string;
-  mealImage: string;
+
+  searchTerm: FormControl;
+  vm$: Observable<RecipeState> = this.facade.vm$;
 
   constructor(
-    fb: FormBuilder,
-    private service: RecipeService,
+    private facade: RecipeFacade,
     private modalService: BsModalService
-  ) {
-    this.form = fb.group({
-      searchTerm: this.searchTerm,
-    });
-  }
+  ) {}
 
   ngOnInit() {
-    this.ingredients = new Array<IngredientMeasure>();
-    this.service.searchRecipes('').subscribe((data) => {
-      this.data = data;
-    });
+    // this.facade.recipes$.subscribe((data) => console.log('recipes$', data));
+    // this.facade.vm$.subscribe((data) => console.log('vm$: ', data));
+
+    const { searchTerm } = this.facade.getStateSnapshot();
+    this.searchTerm = this.facade.buildSearchTermControl();
+    this.searchTerm.patchValue(searchTerm, { emitEvent: false });
   }
 
-  onSubmit() {
-    this.service.searchRecipes(this.searchTerm.value).subscribe((data) => {
-      this.data = data;
-      console.log(data);
+  openModalWithComponent(recipe: Recipe) {
+    const initialState = { recipe };
+    this.modalRef = this.modalService.show(RecipeModalComponent, {
+      initialState,
     });
-  }
-
-  openModal(template: TemplateRef<any>, meal: any) {
-    this.mealTitle = meal.strMeal;
-    this.mealImage = meal.strMealThumb;
-    this.instructions = meal.strInstructions;
-    this.ingredients = new Array<IngredientMeasure>();
-    for (let i = 1; i <= 20; i++) {
-      const ingMeas: IngredientMeasure = new IngredientMeasure();
-      ingMeas.ingredient = meal['strIngredient' + i];
-      ingMeas.measure = meal['strMeasure' + i];
-      if (ingMeas.ingredient !== '' && ingMeas.measure !== '') {
-        this.ingredients.push(ingMeas);
-      }
-    }
-    this.modalRef = this.modalService.show(template, { class: 'modal-lg' });
-    console.log(this.ingredients);
   }
 }

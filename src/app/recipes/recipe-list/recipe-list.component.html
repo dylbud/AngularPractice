@@ -1,61 +1,33 @@
-<section>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="input-group">
-      <input
-        type="text"
-        class="form-control"
-        formControlName="searchTerm"
-        placeholder="Search Recipes"
-      />
-      <div id="searchInput" class="input-group-btn">
-        <button class="btn btn-default" type="submit">
-          <i class="glyphicon glyphicon-search"></i>
-        </button>
+<div class="recipe-list">
+  <section *ngIf="vm$ | async as vm">
+    <input
+      type="text"
+      class="form-control"
+      [formControl]="searchTerm"
+      placeholder="Search Recipes"
+    />
+
+    <div
+      *ngFor="let recipe of vm.recipes; index as i"
+      (click)="openModalWithComponent(recipe)"
+      class="media"
+    >
+      <div class="media-body">
+        <h4 class="media-heading">{{ recipe.mealTitle }}</h4>
+        <span class="mealArea"> ({{ recipe.mealArea }})</span>
+        <p>
+          {{ recipe.ingredients[0].ingredient }},
+          {{ recipe.ingredients[1].ingredient }},
+          {{ recipe.ingredients[2].ingredient }}...
+        </p>
+      </div>
+      <div class="media-right">
+        <img
+          [src]="recipe.mealImage + '/preview'"
+          class="media-object"
+          style="width: 60px;"
+        />
       </div>
     </div>
-  </form>
-
-  <div
-    *ngFor="let meal of data?.meals; index as i"
-    (click)="openModal(template, meal)"
-    class="media"
-  >
-    <div class="media-body">
-      <h4 class="media-heading">{{ meal.strMeal }}</h4>
-      <span class="mealArea"> ({{ meal.strArea }})</span>
-      <p>
-        {{ meal.strIngredient1 }}, {{ meal.strIngredient2 }},
-        {{ meal.strIngredient3 }}...
-      </p>
-    </div>
-    <div class="media-right">
-      <img
-        [src]="meal.strMealThumb + '/preview'"
-        class="media-object"
-        style="width: 60px;"
-      />
-    </div>
-  </div>
-  <!-- <hr /> -->
-</section>
-<ng-template #template>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">{{ mealTitle }}</h4>
-    <button
-      type="button"
-      class="close pull-right"
-      aria-label="Close"
-      (click)="modalRef.hide()"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <img class="mealImage" [src]="mealImage" />
-    <p>Ingredients</p>
-    <ul *ngFor="let ingredient of ingredients">
-      <li>{{ ingredient.measure }} {{ ingredient.ingredient }}</li>
-    </ul>
-    <p>{{ instructions }}</p>
-  </div>
-</ng-template>
+  </section>
+</div>

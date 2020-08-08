@@ -6,8 +6,8 @@ import { CountdownTimerComponent } from './countdown-timer/countdown-timer.compo
 import { FlipImageComponent } from './flip-image/flip-image.component';
 import { ReactiveFormExampleComponent } from './reactive-form-example/reactive-form-example.component';
 import { NotesComponent } from './notes/notes.component';
-import { RecipesComponent } from './recipes/recipes.component';
 import { QuizzlerComponent } from './quizzler/quizzler.component';
+import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'flip-image', component: FlipImageComponent },
   { path: 'reactive-form-example', component: ReactiveFormExampleComponent },
   { path: 'notes', component: NotesComponent },
-  { path: 'recipes', component: RecipesComponent },
+  { path: 'recipes', component: RecipeListComponent },
   { path: 'quizzler', component: QuizzlerComponent },
   { path: '', component: HomeComponent },
   { path: '**', component: FileNotFoundComponent },

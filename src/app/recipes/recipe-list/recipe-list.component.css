@@ -17,3 +17,9 @@
 .media-heading {
   display: inline;
 }
+
+.recipe-list {
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+}
