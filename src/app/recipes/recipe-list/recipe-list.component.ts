@@ -2,8 +2,9 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { RecipeFacade, RecipeState, Recipe } from '../recipe-facade.service';
+import { RecipeFacade, RecipeState } from '../recipe-facade.service';
 import { RecipeModalComponent } from '../recipe-modal/recipe-modal.component';
+import { Recipe } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-list',

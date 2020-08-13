@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Recipe } from '../recipe-facade.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { Recipe } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-modal',

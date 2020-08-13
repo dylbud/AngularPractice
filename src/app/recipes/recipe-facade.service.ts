@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RecipeService } from './recipe.service';
+import { RecipeService, Recipe } from './recipe.service';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import {
   distinctUntilChanged,
@@ -9,19 +9,6 @@ import {
   tap,
 } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
-
-export class IngredientMeasure {
-  measure: string;
-  ingredient: string;
-}
-
-export interface Recipe {
-  mealTitle: string;
-  ingredients: IngredientMeasure[];
-  instructions: string;
-  mealImage: string;
-  mealArea: string;
-}
 
 export interface RecipeState {
   recipes: Recipe[];
@@ -72,28 +59,6 @@ export class RecipeFacade {
       .pipe(
         switchMap((s) => {
           return service.searchRecipes(s);
-        }),
-        map((recipes) => {
-          if (recipes) {
-            return recipes.map((r) => {
-              const recipe: Recipe = {
-                mealTitle: r.strMeal,
-                ingredients: [],
-                instructions: r.strInstructions,
-                mealImage: r.strMealThumb,
-                mealArea: r.strArea,
-              };
-              for (let i = 1; i <= 20; i++) {
-                const ingMeas: IngredientMeasure = new IngredientMeasure();
-                ingMeas.ingredient = r['strIngredient' + i];
-                ingMeas.measure = r['strMeasure' + i];
-                if (ingMeas.ingredient !== '' && ingMeas.measure !== '') {
-                  recipe.ingredients.push(ingMeas);
-                }
-              }
-              return recipe;
-            });
-          }
         })
       )
       .subscribe(
