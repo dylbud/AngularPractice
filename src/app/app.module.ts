@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { NotesComponent } from './notes/notes.component';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 import { QuizzlerComponent } from './quizzler/quizzler.component';
 import { RecipeModalComponent } from './recipes/recipe-modal/recipe-modal.component';
+import { CovidDashboardComponent } from './covid-dashboard/covid-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { RecipeModalComponent } from './recipes/recipe-modal/recipe-modal.compon
     RecipeListComponent,
     QuizzlerComponent,
     RecipeModalComponent,
+    CovidDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { RecipeModalComponent } from './recipes/recipe-modal/recipe-modal.compon
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
     BrowserAnimationsModule,
+    NgxChartsModule,
     FormsModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),

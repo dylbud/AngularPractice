@@ -8,6 +8,7 @@ import { ReactiveFormExampleComponent } from './reactive-form-example/reactive-f
 import { NotesComponent } from './notes/notes.component';
 import { QuizzlerComponent } from './quizzler/quizzler.component';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
+import { CovidDashboardComponent } from './covid-dashboard/covid-dashboard.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'notes', component: NotesComponent },
   { path: 'recipes', component: RecipeListComponent },
   { path: 'quizzler', component: QuizzlerComponent },
+  { path: 'covid', component: CovidDashboardComponent },
   { path: '', component: HomeComponent },
   { path: '**', component: FileNotFoundComponent },
 ];
