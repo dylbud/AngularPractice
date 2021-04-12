@@ -1,35 +1,87 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align: center;">
-  <h1 class="card-header bg-info">Welcome to {{ title }}!</h1>
-  <h3 class="text-secondary">
-    PEV Selling Countries
-  </h3>
+<div style="text-align: center">
+  <h1 class="card-header bg-info">Covid19 Data Dashboard</h1>
+  <h3 class="text-secondary"></h3>
   <div class="row ml-5">
     <div class="col">
       <div class="row">
-        <h4>
-          Vertical Bar Chart
-        </h4>
+        <h4>United States</h4>
       </div>
       <div class="row">
-        <ngx-charts-bar-vertical
+        <ngx-charts-line-chart
+          style="width: 600px"
+          class="center-block"
           [view]="view"
           [scheme]="colorScheme"
-          [results]="single"
-          [gradient]="gradient"
-          [xAxis]="showXAxis"
-          [yAxis]="showYAxis"
-          [legend]="showLegend"
+          [legend]="legend"
           [showXAxisLabel]="showXAxisLabel"
           [showYAxisLabel]="showYAxisLabel"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
           [xAxisLabel]="xAxisLabel"
           [yAxisLabel]="yAxisLabel"
+          [timeline]="timeline"
+          [results]="usData$ | async"
           (select)="onSelect($event)"
+          (activate)="onActivate($event)"
+          (deactivate)="onDeactivate($event)"
         >
-        </ngx-charts-bar-vertical>
+        </ngx-charts-line-chart>
       </div>
     </div>
     <div class="col">
+      <div class="row">
+        <h4>Recovered</h4>
+      </div>
+      <div class="row">
+        <ngx-charts-line-chart
+          style="width: 600px"
+          class="center-block"
+          [view]="view"
+          [scheme]="colorScheme"
+          [legend]="legend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"
+          [timeline]="timeline"
+          [results]="recovered$ | async"
+          (select)="onSelect($event)"
+          (activate)="onActivate($event)"
+          (deactivate)="onDeactivate($event)"
+        >
+        </ngx-charts-line-chart>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row">
+        <h4>Deaths</h4>
+      </div>
+      <div class="row">
+        <ngx-charts-line-chart
+          style="width: 600px"
+          class="center-block"
+          [view]="view"
+          [scheme]="colorScheme"
+          [legend]="legend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"
+          [timeline]="timeline"
+          [results]="deaths$ | async"
+          (select)="onSelect($event)"
+          (activate)="onActivate($event)"
+          (deactivate)="onDeactivate($event)"
+        >
+        </ngx-charts-line-chart>
+      </div>
+    </div>
+    <!-- <div class="col">
       <div class="row">
         <h4>
           Vertical Bar Chart Normalized
@@ -75,5 +127,6 @@
       (select)="onSelect($event)"
     >
     </ngx-charts-bar-vertical-stacked>
+  </div> -->
   </div>
 </div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CovidService } from './covid.service';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-covid-dashboard',
@@ -6,140 +9,51 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./covid-dashboard.component.css'],
 })
 export class CovidDashboardComponent implements OnInit {
-  title = 'Angular Charts';
-
+  // width and height of the view window where the report displays:
   view: any[] = [600, 400];
 
   // options for the chart
-  showXAxis = true;
-  showYAxis = true;
-  gradient = false;
-  showLegend = true;
-  showXAxisLabel = true;
-  xAxisLabel = 'Country';
+  legend = true;
+  showLabels = true;
+  animations = true;
+  xAxis = true;
+  yAxis = true;
   showYAxisLabel = true;
-  yAxisLabel = 'Sales';
+  showXAxisLabel = true;
+  xAxisLabel = 'Date';
+  yAxisLabel = 'Deaths';
   timeline = true;
 
   colorScheme = {
-    domain: ['#9370DB', '#87CEFA', '#FA8072', '#FF7F50', '#90EE90', '#9370DB'],
+    domain: [
+      '#9370DB',
+      '#87CEFA',
+      '#FA8072',
+      '#FF7F50',
+      '#90EE90',
+      '#9370DB',
+      '#BEA9E9',
+      '#BCF4BC',
+    ],
   };
 
-  //pie
-  showLabels = true;
+  usData$: Observable<any>;
 
-  // data goes here
-  public single = [
-    {
-      name: 'China',
-      value: 2243772,
-    },
-    {
-      name: 'USA',
-      value: 1126000,
-    },
-    {
-      name: 'Norway',
-      value: 296215,
-    },
-    {
-      name: 'Japan',
-      value: 257363,
-    },
-    {
-      name: 'Germany',
-      value: 196750,
-    },
-    {
-      name: 'France',
-      value: 204617,
-    },
-  ];
+  constructor(private service: CovidService) {}
 
-  public multi = [
-    {
-      name: 'China',
-      series: [
-        {
-          name: '2018',
-          value: 2243772,
-        },
-        {
-          name: '2017',
-          value: 1227770,
-        },
-      ],
-    },
+  ngOnInit() {
+    this.usData$ = this.service.getData('united-states');
+  }
 
-    {
-      name: 'USA',
-      series: [
-        {
-          name: '2018',
-          value: 1126000,
-        },
-        {
-          name: '2017',
-          value: 764666,
-        },
-      ],
-    },
+  onSelect(data): void {
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+  }
 
-    {
-      name: 'Norway',
-      series: [
-        {
-          name: '2018',
-          value: 296215,
-        },
-        {
-          name: '2017',
-          value: 209122,
-        },
-      ],
-    },
+  onActivate(data): void {
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  }
 
-    {
-      name: 'Japan',
-      series: [
-        {
-          name: '2018',
-          value: 257363,
-        },
-        {
-          name: '2017',
-          value: 205350,
-        },
-      ],
-    },
-
-    {
-      name: 'Germany',
-      series: [
-        {
-          name: '2018',
-          value: 196750,
-        },
-        {
-          name: '2017',
-          value: 129246,
-        },
-      ],
-    },
-
-    {
-      name: 'France',
-      series: [
-        {
-          name: '2018',
-          value: 204617,
-        },
-        {
-          name: '2017',
-          value: 149797,
-        },
-      ],
-    },
-  ];
-  ngOnInit() {}
+  onDeactivate(data): void {
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  }
 }
