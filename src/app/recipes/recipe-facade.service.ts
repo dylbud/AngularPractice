@@ -9,6 +9,7 @@ import {
   tap,
 } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
+import { Facade } from '../facade.abstract';
 
 export interface RecipeState {
   recipes: Recipe[];
@@ -16,19 +17,10 @@ export interface RecipeState {
   loading: boolean;
 }
 
-// tslint:disable-next-line: variable-name
-let _state: RecipeState = {
-  recipes: [],
-  searchTerm: '',
-  loading: false,
-};
-
 @Injectable({
   providedIn: 'root',
 })
-export class RecipeFacade {
-  private store = new BehaviorSubject<RecipeState>(_state);
-  private state$ = this.store.asObservable();
+export class RecipeFacade extends Facade<RecipeState>{
 
   recipes$ = this.state$.pipe(
     map((state) => state.recipes),
@@ -54,6 +46,7 @@ export class RecipeFacade {
   );
 
   constructor(service: RecipeService) {
+    super({ loading: false, searchTerm: '', recipes: [] });
     // if I hade more than one parameter I would use combineLatest here:
     this.searchTerm$
       .pipe(
@@ -63,14 +56,14 @@ export class RecipeFacade {
       )
       .subscribe(
         (recipes) => {
-          this.updateState({ ..._state, recipes, loading: false });
+          this.updateState({ ...this.state, recipes, loading: false });
         },
         (error) => console.log('Error Report: ', error)
       );
   }
 
   getStateSnapshot(): RecipeState {
-    return { ..._state };
+    return { ...this.state };
   }
 
   buildSearchTermControl(): FormControl {
@@ -82,10 +75,6 @@ export class RecipeFacade {
   }
 
   updateSearchTerm(term: string) {
-    this.updateState({ ..._state, searchTerm: term, loading: true });
-  }
-
-  private updateState(state: RecipeState) {
-    this.store.next((_state = state));
+    this.updateState({ ...this.state, searchTerm: term, loading: true });
   }
 }
