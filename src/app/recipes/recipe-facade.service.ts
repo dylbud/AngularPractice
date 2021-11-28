@@ -9,6 +9,7 @@ import {
   tap,
 } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
+import { Facade } from '../facade.abstact';
 
 export interface RecipeState {
   recipes: Recipe[];
@@ -26,9 +27,7 @@ let _state: RecipeState = {
 @Injectable({
   providedIn: 'root',
 })
-export class RecipeFacade {
-  private store = new BehaviorSubject<RecipeState>(_state);
-  private state$ = this.store.asObservable();
+export class RecipeFacade extends Facade<RecipeState> {
 
   recipes$ = this.state$.pipe(
     map((state) => state.recipes),
@@ -54,6 +53,7 @@ export class RecipeFacade {
   );
 
   constructor(service: RecipeService) {
+    super({ loading: false, searchTerm: undefined, recipes: [] });
     // if I hade more than one parameter I would use combineLatest here:
     this.searchTerm$
       .pipe(
@@ -78,14 +78,11 @@ export class RecipeFacade {
     searchTerm.valueChanges
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe((value) => this.updateSearchTerm(value));
+      
     return searchTerm;
   }
 
   updateSearchTerm(term: string) {
     this.updateState({ ..._state, searchTerm: term, loading: true });
-  }
-
-  private updateState(state: RecipeState) {
-    this.store.next((_state = state));
   }
 }

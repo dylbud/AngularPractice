@@ -48,7 +48,7 @@
 </section>
 <br />
 <hr *ngIf="notes.length > 0" />
-<div *ngFor="let note of notes; index as i">
+<div *ngFor="let note of notes; let i = index">
   <div class="media" [ngClass]="{ edit: editingIndex === i }">
     <div *ngIf="editingIndex === i" class="media-body">
       <h4 class="media-heading">{{ subject.value }}</h4>

@@ -9,7 +9,7 @@ import { CountdownTimerService } from '../countdown-timer-service.service';
   styleUrls: ['./timer.component.css']
 })
 export class TimerComponent {
-
-  constructor(private service: CountdownTimerService) { }
+public service: CountdownTimerService
+  constructor(service: CountdownTimerService) { }
 
 }
